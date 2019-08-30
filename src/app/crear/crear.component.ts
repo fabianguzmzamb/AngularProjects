@@ -21,11 +21,10 @@ constructor(private lugaresServices:LugaresService, private route:ActivatedRoute
 }
 guardarLugar(){
   var direccion = this.lugar.calle+','+this.lugar.ciudad+','+this.lugar.pais;
-  this.http.get<{status: string, results: any[]}>('http://maps.googleapis.com/maps/api/geocode/json?address='+direccion+'&key='+'AIzaSyCGQIcYmvO3TNYE8dMqDTcs3YOtGsFMrRE',
+  this.http.get<{status: string, results: any[]}>('https://maps.googleapis.com/maps/api/geocode/json?address='+direccion+'&key='+'AIzaSyAi-LaJnkdbBKkFhRXIOCIj_235yLtHbow',
      {responseType: 'json'}
    ).subscribe(e => {
      if (e.status === 'OK') {
-       console.log(e.results[0].geometry.location.lng);
        this.lugar.lng = e.results[0].geometry.location.lng; 
        this.lugar.lat = e.results[0].geometry.location.lat; 
        if (this.id != 'new'){
@@ -37,6 +36,10 @@ guardarLugar(){
         alert('Negocio Guardado con exito');
       }
       this.lugar={};
+     }else{
+      alert('No devolvio bien');
+      console.log(e);
+      debugger;
      }
    });
   }

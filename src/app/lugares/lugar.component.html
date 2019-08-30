@@ -1,8 +1,11 @@
+
+<p class="bg-danger">{{errormsg}}</p>
+
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-	<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+	<agm-marker *ngFor="let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng"></agm-marker>
 </agm-map>
 <hr />
-
+<!--
 <ul>
  <ng-container *ngFor ="let lugar of lugares; let i = index" [ngSwitch]="lugar.cercania"> 
   <a ><li contar-clicks [ngStyle]="{color:(lugar.active) ? 'black' : 'gray'}" [ngClass]="{numero_par: (i+1) % 2 !== 0}" [resaltar] = "lugar.plan">{{lugar.nombre}} -
@@ -12,16 +15,20 @@
   </li></a>
   </ng-container>
 </ul>
-
-
+-->
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
 			<h2>Lugares Cercanos</h2>
 			<a class="btn btn-primary" routerLink="/crear/new">Crear Nuevo Negocio</a>
 			<ul class="list-group">
-				 <ng-container *ngFor ="let lugar of lugares"  > 
-                   <a routerLink="/crear/{{lugar.id}}" ><li class="list-group-item">{{lugar.nombre}}</li></a>
+				 <ng-container *ngFor ="let lugar of lugares">
+					<li class="list-group-item" ><a routerLink="/crear/{{lugar.id}}"><h3>
+						{{lugar.nombre}}</h3></a>
+						<br />
+						<small>Creado : {{lugar.id | date:'mediumTime' | uppercase}}</small>
+						<p [innerHtml]="lugar.description | linkifystr"></p>
+					</li>
                  </ng-container>
 			</ul>
 		</div>

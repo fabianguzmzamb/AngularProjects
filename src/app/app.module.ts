@@ -19,6 +19,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/da
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CrearComponent } from './crear/crear.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LinkifystrPipe } from './pipes/linkifystr.pipe';
 
 const appRoutes: Routes = [
  {path:'',component: AppComponent},
@@ -44,6 +45,7 @@ export const firebaseConfig = {
     ResaltarDirective,
     ContactoComponent,
     CrearComponent,
+    LinkifystrPipe,
     ContarClickDirective
   ],
   imports: [
