@@ -9,3 +9,12 @@ agm-map {
     height: 300px;
   }
 
+#cuadrado {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+.padding{
+  padding: 10px;
+  margin-bottom: 10px;
+}

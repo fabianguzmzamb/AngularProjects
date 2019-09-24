@@ -37,9 +37,11 @@ export class LugaresService{
           return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+direccion+'&key='+'AIzaSyCGQIcYmvO3TNYE8dMqDTcs3YOtGsFMrRE');
       }
       public getLugar(id){
+        //obtengo el registro segun el id correspondiente
          return this.afDB.object('lugares/'+id);
       }
       public editarLugar(lugar){
+        //se edita el lugar segun el id correspondiente
         this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
       }
 }

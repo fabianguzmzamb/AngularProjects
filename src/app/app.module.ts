@@ -1,24 +1,27 @@
+//librerias
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/Forms';
 import { Routes,RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+//componentes
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LugarComponent } from './lugares/lugar.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import {DetalleComponent} from './detalle/detalle.component';
-
+import { CrearComponent } from './crear/crear.component';
+//directivas y servicios
 import { ResaltarDirective } from './directives/resaltar.directives';
 import { ContarClickDirective } from './directives/contar-clicks.directive';
 import { LugaresService } from './services/lugares.services';
-
+//firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { CrearComponent } from './crear/crear.component';
-import { HttpClientModule } from '@angular/common/http';
+//pipes
 import { LinkifystrPipe } from './pipes/linkifystr.pipe';
 
 const appRoutes: Routes = [
@@ -59,6 +62,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     AngularFireAuthModule
   ],
   providers: [LugaresService],
